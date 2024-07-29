@@ -13,6 +13,8 @@ factory that will call the create to-do function
 
 */
 
+let toDoList = [];
+
 function ToDo(title, description, duedate, priority) {
     title = title;
     description = description;
