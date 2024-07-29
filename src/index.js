@@ -12,3 +12,23 @@ import './style.css';
 factory that will call the create to-do function
 
 */
+
+const ToDo = (title, description, duedate, priority) => {
+    this.title = title;
+    this.description = description;
+    this.duedate = duedate;
+    this.priority = priority;
+    this.completed = false;
+}
+
+function changePriority(todo) {
+    todo.priority = todo.priority === "high" ? "low" : "high";
+}
+
+function changeDescription(todo, description) {
+    todo.description = description;
+}
+
+function markComplete(todo) {
+    todo.completed = true;
+}
