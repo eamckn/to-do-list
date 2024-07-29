@@ -20,7 +20,8 @@ function ToDo(title, description, duedate, priority) {
     description = description;
     duedate = duedate;
     priority = priority;
-    completed = false;
+
+    let completed = false;
 
     return { title, description, duedate, priority, completed };
 }
@@ -32,3 +33,11 @@ function changePriority(todo) {
 function markComplete(todo) {
     todo.completed = true;
 }
+
+toDoList.push(ToDo("Call mom", "Call my mom. I miss her.", "12/2", "high"));
+
+console.log(toDoList[0]);
+changePriority(toDoList[0]);
+console.log(toDoList[0]);
+markComplete(toDoList[0]);
+console.log(toDoList[0]);
