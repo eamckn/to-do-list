@@ -18,20 +18,22 @@ factory that will call the create to-do function
 
 const controller = (function() {
 
-    let toDoList = [];
+    const toDoList = [];
 
-    let defaultproject = [];
+    const allProjects = [];
 
     const todo = toDo();
 
     const proj = project();
 
-    return { toDoList, defaultproject, todo, proj };
+    return { toDoList, allProjects, todo, proj };
     
 })();
 
 let exampleTask = controller.todo.create("Call mom", "Call my mom. I miss her.", "12/2", "high");
 
+
+// console logs for testing core functionality of adding and updating
 controller.toDoList.push(exampleTask);
 console.log(controller.toDoList[0]);
 controller.todo.changePriority(controller.toDoList[0]);
@@ -39,5 +41,6 @@ console.log(controller.toDoList[0]);
 controller.todo.markComplete(controller.toDoList[0]);
 console.log(controller.toDoList[0]);
 
-controller.defaultproject.push(exampleTask);
-console.log(controller.defaultproject);
+let exampleProject = controller.proj.getProject(controller.proj.createProject("Home maintenance"));
+controller.allProjects.push(exampleProject);
+console.log(controller.allProjects);
