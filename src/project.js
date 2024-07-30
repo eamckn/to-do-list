@@ -7,7 +7,7 @@ export default function project() {
         project.tasks = new Array();
     }
 
-    function addToProject(todo) {
+    function addToProject(project, todo) {
         project.tasks.push(todo);
     }
 

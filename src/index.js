@@ -30,17 +30,15 @@ const controller = (function() {
     
 })();
 
+let defaultProject = controller.proj.getProject(controller.proj.createProject("Default"));
+console.log(defaultProject);
 let exampleTask = controller.todo.create("Call mom", "Call my mom. I miss her.", "12/2", "high");
+controller.proj.addToProject(defaultProject, exampleTask);
+console.log(defaultProject);
 
+/* Further testing for core functionality of adding and updating
+- Create a project
+- Create a task
+- Add task to that project
 
-// console logs for testing core functionality of adding and updating
-controller.toDoList.push(exampleTask);
-console.log(controller.toDoList[0]);
-controller.todo.changePriority(controller.toDoList[0]);
-console.log(controller.toDoList[0]);
-controller.todo.markComplete(controller.toDoList[0]);
-console.log(controller.toDoList[0]);
-
-let exampleProject = controller.proj.getProject(controller.proj.createProject("Home maintenance"));
-controller.allProjects.push(exampleProject);
-console.log(controller.allProjects);
+*/
