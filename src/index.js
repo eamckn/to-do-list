@@ -15,21 +15,24 @@ factory that will call the create to-do function
 
 */
 
-let toDoList = [];
-let defaultproject = [];
 
-function controller() {
+const controller = (function() {
+
+    let toDoList = [];
+
+    let defaultproject = [];
 
     const todo = toDo();
 
-    const project = project();
+    const proj = project();
+
+    return { toDoList, defaultproject, todo, proj };
     
-}
+})();
 
-toDoList.push(ToDo("Call mom", "Call my mom. I miss her.", "12/2", "high"));
-
-console.log(toDoList[0]);
-changePriority(toDoList[0]);
-console.log(toDoList[0]);
-markComplete(toDoList[0]);
-console.log(toDoList[0]);
+controller.toDoList.push(controller.todo.add("Call mom", "Call my mom. I miss her.", "12/2", "high"));
+console.log(controller.toDoList[0]);
+controller.todo.changePriority(controller.toDoList[0]);
+console.log(controller.toDoList[0]);
+controller.todo.markComplete(controller.toDoList[0]);
+console.log(controller.toDoList[0]);
