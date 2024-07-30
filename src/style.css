@@ -12,6 +12,22 @@ body {
     height: 100%;
 
     display: flex;
+    flex-direction: column;
+}
+
+header {
+    height: 10vh;
+
+    flex: auto;
+
+}
+
+#content {
+    height: 90vh;
+
+    flex: auto;
+
+    display: flex;
 }
 
 #sidebar {
