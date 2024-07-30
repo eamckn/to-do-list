@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+
+    display: flex;
+}
+
+#sidebar {
+    width: 25%;
+    height: 100%;
+
+    flex: auto;
+
+    border: 1px solid black;
+}
+
+#display {
+    width: 75%;
+    height: 100%;
+
+    flex: auto;
+
+    background-color: tan;
+}
