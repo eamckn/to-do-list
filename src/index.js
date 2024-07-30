@@ -14,11 +14,19 @@ factory that will call the create to-do function
 */
 
 let toDoList = [];
-let project = [];
+let defaultproject = [];
 
 function controller() {
 
-    function ToDo(title, description, duedate, priority) {
+    const todo = toDo();
+
+    const project = project();
+    
+}
+
+function toDo() {
+
+    function add(title, description, duedate, priority) {
         title = title;
         description = description;
         duedate = duedate;
@@ -37,6 +45,10 @@ function controller() {
         todo.completed = true;
     }
 
+}
+
+function project() {
+
     function addToProject(project, todo) {
         project.push(todo);
     }
@@ -49,7 +61,7 @@ function controller() {
         name = newProject();
         return name;
     }
-    
+
 }
 
 toDoList.push(ToDo("Call mom", "Call my mom. I miss her.", "12/2", "high"));
