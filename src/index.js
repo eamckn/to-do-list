@@ -15,23 +15,27 @@ factory that will call the create to-do function
 
 let toDoList = [];
 
-function ToDo(title, description, duedate, priority) {
-    title = title;
-    description = description;
-    duedate = duedate;
-    priority = priority;
+function controller() {
 
-    let completed = false;
-
-    return { title, description, duedate, priority, completed };
-}
-
-function changePriority(todo) {
-    todo.priority = todo.priority === "high" ? "low" : "high";
-}
-
-function markComplete(todo) {
-    todo.completed = true;
+    function ToDo(title, description, duedate, priority) {
+        title = title;
+        description = description;
+        duedate = duedate;
+        priority = priority;
+    
+        let completed = false;
+    
+        return { title, description, duedate, priority, completed };
+    }
+    
+    function changePriority(todo) {
+        todo.priority = todo.priority === "high" ? "low" : "high";
+    }
+    
+    function markComplete(todo) {
+        todo.completed = true;
+    }
+    
 }
 
 toDoList.push(ToDo("Call mom", "Call my mom. I miss her.", "12/2", "high"));
