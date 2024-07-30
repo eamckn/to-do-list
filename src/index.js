@@ -40,6 +40,10 @@ function toDo() {
     function changePriority(todo) {
         todo.priority = todo.priority === "high" ? "low" : "high";
     }
+
+    function changeDescription(todo, newDescription) {
+        todo.description = newDescription;
+    }
     
     function markComplete(todo) {
         todo.completed = true;
