@@ -30,9 +30,14 @@ const controller = (function() {
     
 })();
 
-controller.toDoList.push(controller.todo.add("Call mom", "Call my mom. I miss her.", "12/2", "high"));
+let exampleTask = controller.todo.create("Call mom", "Call my mom. I miss her.", "12/2", "high");
+
+controller.toDoList.push(exampleTask);
 console.log(controller.toDoList[0]);
 controller.todo.changePriority(controller.toDoList[0]);
 console.log(controller.toDoList[0]);
 controller.todo.markComplete(controller.toDoList[0]);
 console.log(controller.toDoList[0]);
+
+controller.defaultproject.push(exampleTask);
+console.log(controller.defaultproject);

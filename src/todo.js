@@ -1,6 +1,6 @@
 export default function toDo() {
 
-    function add(title, description, duedate, priority) {
+    function create(title, description, duedate, priority) {
     
         let completed = false;
     
@@ -19,6 +19,6 @@ export default function toDo() {
         todo.completed = true;
     }
 
-    return { add, changePriority, changeDescription, markComplete };
+    return { create, changePriority, changeDescription, markComplete };
 
 }
