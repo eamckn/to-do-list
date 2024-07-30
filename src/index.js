@@ -14,6 +14,7 @@ factory that will call the create to-do function
 */
 
 let toDoList = [];
+let project = [];
 
 function controller() {
 
@@ -34,6 +35,19 @@ function controller() {
     
     function markComplete(todo) {
         todo.completed = true;
+    }
+
+    function addToProject(project, todo) {
+        project.push(todo);
+    }
+
+    function newProject() {
+        return new Array;
+    }
+
+    function nameProject(name) {
+        name = newProject();
+        return name;
     }
     
 }
