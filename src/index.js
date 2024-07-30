@@ -1,4 +1,6 @@
 import './style.css';
+import toDo from './todo.js';
+import project from './project.js';
 
 //alert("It's working");
 
@@ -22,50 +24,6 @@ function controller() {
 
     const project = project();
     
-}
-
-function toDo() {
-
-    function add(title, description, duedate, priority) {
-        title = title;
-        description = description;
-        duedate = duedate;
-        priority = priority;
-    
-        let completed = false;
-    
-        return { title, description, duedate, priority, completed };
-    }
-    
-    function changePriority(todo) {
-        todo.priority = todo.priority === "high" ? "low" : "high";
-    }
-
-    function changeDescription(todo, newDescription) {
-        todo.description = newDescription;
-    }
-    
-    function markComplete(todo) {
-        todo.completed = true;
-    }
-
-}
-
-function project() {
-
-    function addToProject(project, todo) {
-        project.push(todo);
-    }
-
-    function newProject() {
-        return new Array;
-    }
-
-    function nameProject(name) {
-        name = newProject();
-        return name;
-    }
-
 }
 
 toDoList.push(ToDo("Call mom", "Call my mom. I miss her.", "12/2", "high"));
