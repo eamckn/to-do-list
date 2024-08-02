@@ -13,7 +13,7 @@ export default function domManip() {
         sidebar.appendChild(projectToDisplay);
         projectToDisplay.addEventListener('click', function() {
             displayProjectTodos(project);
-            updateCurrentProject(project);
+            controller.updateCurrentProject(project);
         });
     }
 
@@ -32,7 +32,7 @@ export default function domManip() {
         sidebar.appendChild(newProject);
         newProject.addEventListener('click', function() {
             displayProjectTodos(project);
-            updateCurrentProject(project);
+            controller.updateCurrentProject(project);
         });
     }
 
@@ -49,11 +49,7 @@ export default function domManip() {
             display.removeChild(display.firstChild);
         }
     }
-    
-    function updateCurrentProject(project) {
-        controller.currentProject = project;
-        console.log(controller.currentProject);
-    }
+
 
     return { showProjectInSideBar, showTodoinDisplay, displayNewProject };
 

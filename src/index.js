@@ -62,7 +62,7 @@ const controller = (function() {
     newTodo.changeCompletedStatus();
     console.log(newTodo.get());
 
-    console.log(currentProject.todos);
+    console.log(currentProject);
 
     function displayAllProjects() {
         for (const item of allProjects) {
@@ -109,12 +109,17 @@ const controller = (function() {
         return prompt("What would you like to name this project?")
     }
 
+    function updateCurrentProject(project) {
+        currentProject = project;
+        console.log(currentProject);
+    }
+
     document.addEventListener('DOMContentLoaded', displayAllProjects)
     document.addEventListener('DOMContentLoaded', displayCurrentProjectTodos)
     newTodoButton.addEventListener('click', makeNewTodo);
     newProjectButton.addEventListener('click', makeNewProject);
     
-    return { todo, proj, dom, currentProject };
+    return { todo, proj, dom, currentProject, updateCurrentProject };
     
 })();
 
