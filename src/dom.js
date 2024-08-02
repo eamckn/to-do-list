@@ -23,6 +23,12 @@ export default function domManip() {
         display.appendChild(todoToDisplay);
     }
 
-    return { showProjectInSideBar, showTodoinDisplay };
+    function displayNewProject(project) {
+        const newProject = document.createElement("button");
+        newProject.innerHTML = project.name;
+        sidebar.appendChild(newProject);
+    }
+
+    return { showProjectInSideBar, showTodoinDisplay, displayNewProject };
 
 }

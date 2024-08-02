@@ -18,6 +18,9 @@ const content = document.querySelector("#content");
 const sidebar = document.querySelector("#sidebar");
 const display = document.querySelector("#display");
 
+const newTodoButton = document.querySelector("#create-todo");
+const newProjectButton = document.querySelector("#create-project");
+
 
 const controller = (function() {
 
@@ -35,11 +38,13 @@ const controller = (function() {
 
     // Console logs for testing
     // Create 2 new todos
+    let defaultTodo = todo.create("Default", "Here's my description", "Never", "low")
     let newTodo = todo.create("Clean room", "It's messy.", "Tomorrow", "high");
     let otherTodo = todo.create("Call mom", "You need to talk about your plane ticket.", "Tomorrow", "high");
     console.log(newTodo.get());
     console.log(otherTodo.get());
     // Add them to the default project
+    defaultProject.addTodo(defaultTodo);
     defaultProject.addTodo(newTodo);
     defaultProject.addTodo(otherTodo);
     console.log(defaultProject.get());
@@ -71,8 +76,41 @@ const controller = (function() {
         }
     }
 
+    function makeNewTodo() {
+        let todoFields = getTodoFields();
+        newTodo = todo.create(todoFields.title, todoFields.description, todoFields.duedate, todoFields.priority);
+        currentProject.addTodo(newTodo);
+        dom.showTodoinDisplay(newTodo);
+        //console.log(currentProject);
+        //console.log(currentProject.todos);
+    }
+
+    function getTodoFields() {
+        let title = prompt("Input title:");
+        let description = prompt("Input description");
+        let duedate = prompt("Input due date");
+        let priority = prompt("Input priority:")
+
+        return { title, description, duedate, priority }
+    }
+
+    function makeNewProject() {
+        let name = getProjectName();
+        let newProject = proj.create(name);
+        allProjects.push(newProject);
+        dom.displayNewProject(newProject);
+        console.log(newProject);
+        console.log(allProjects);
+    }
+
+    function getProjectName() {
+        return prompt("What would you like to name this project?")
+    }
+
     document.addEventListener('DOMContentLoaded', displayAllProjects)
     document.addEventListener('DOMContentLoaded', displayCurrentProjectTodos)
+    newTodoButton.addEventListener('click', makeNewTodo);
+    newProjectButton.addEventListener('click', makeNewProject);
     
     return { todo, proj, dom };
     
