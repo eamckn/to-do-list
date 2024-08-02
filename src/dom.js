@@ -14,6 +14,15 @@ export default function domManip() {
         sidebar.appendChild(projectToDisplay);
     }
 
-    return { showProjectInSideBar };
+    function showTodoinDisplay(todo) {
+        const todoToDisplay = document.createElement("div");
+        todoToDisplay.innerHTML = `Title: ${todo.title} \n
+                                   Description: ${todo.description}
+                                   Due Date: ${todo.duedate}
+                                   Priority: ${todo.priority}`
+        display.appendChild(todoToDisplay);
+    }
+
+    return { showProjectInSideBar, showTodoinDisplay };
 
 }

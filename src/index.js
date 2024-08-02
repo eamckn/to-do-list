@@ -57,13 +57,22 @@ const controller = (function() {
     newTodo.changeCompletedStatus();
     console.log(newTodo.get());
 
+    console.log(currentProject.todos);
+
     function displayAllProjects() {
         for (const item of allProjects) {
             dom.showProjectInSideBar(item);
         }
     }
 
+    function displayCurrentProjectTodos() {
+        for (const item of currentProject.todos) {
+            dom.showTodoinDisplay(item);
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', displayAllProjects)
+    document.addEventListener('DOMContentLoaded', displayCurrentProjectTodos)
     
     return { todo, proj, dom };
     
