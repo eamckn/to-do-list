@@ -21,7 +21,6 @@ const display = document.querySelector("#display");
 const newTodoButton = document.querySelector("#create-todo");
 const newProjectButton = document.querySelector("#create-project");
 
-
 const controller = (function() {
 
     const todo = toDo();
@@ -41,26 +40,26 @@ const controller = (function() {
     let defaultTodo = todo.create("Default", "Here's my description", "Never", "low")
     let newTodo = todo.create("Clean room", "It's messy.", "Tomorrow", "high");
     let otherTodo = todo.create("Call mom", "You need to talk about your plane ticket.", "Tomorrow", "high");
-    console.log(newTodo.get());
-    console.log(otherTodo.get());
+    //console.log(newTodo.get());
+    //console.log(otherTodo.get());
     // Add them to the default project
     defaultProject.addTodo(defaultTodo);
     defaultProject.addTodo(newTodo);
     defaultProject.addTodo(otherTodo);
-    console.log(defaultProject.get());
+    //console.log(defaultProject.get());
     // Create new project
     const personalTasks = proj.create("Personal tasks");
     allProjects.push(personalTasks);
-    console.log(personalTasks.get());
+    //console.log(personalTasks.get());
     // Remove todos from default
     defaultProject.removeTodo(newTodo);
-    console.log(defaultProject.get());
+    //console.log(defaultProject.get());
     // Set todos as complete
     personalTasks.addTodo(newTodo);
-    console.log(personalTasks.get())
-    console.log(newTodo.get());
+    //console.log(personalTasks.get())
+    //console.log(newTodo.get());
     newTodo.changeCompletedStatus();
-    console.log(newTodo.get());
+    //console.log(newTodo.get());
 
     console.log(currentProject);
 
@@ -86,10 +85,13 @@ const controller = (function() {
     }
 
     function getTodoFields() {
+        /*
         let title = prompt("Input title:");
         let description = prompt("Input description");
         let duedate = prompt("Input due date");
         let priority = prompt("Input priority:")
+        */
+        dom.displayInputDialog();
 
         return { title, description, duedate, priority }
     }
@@ -119,7 +121,7 @@ const controller = (function() {
     newTodoButton.addEventListener('click', makeNewTodo);
     newProjectButton.addEventListener('click', makeNewProject);
     
-    return { todo, proj, dom, currentProject, updateCurrentProject };
+    return { todo, proj, dom, updateCurrentProject };
     
 })();
 

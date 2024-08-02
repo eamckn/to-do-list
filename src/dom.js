@@ -7,6 +7,48 @@ export default function domManip() {
     const sidebar = document.querySelector("#sidebar");
     const display = document.querySelector("#display");
 
+    function displayInputDialog() {
+        let dialog = buildInputDialog();
+        dialog.showModal();
+    }
+
+    function buildInputDialog() {
+        // Create dialog elements
+        const dialog = document.createElement("dialog");
+        const form = document.createElement("form");
+        const titleLabel = document.createElement("label");
+        const titleInput = document.createElement("input");
+        const descriptionLabel = document.createElement("label");
+        const descriptionInput = document.createElement("textarea");
+        const dueDateLabel = document.createElement("label");
+        const dueDateInput = document.createElement("input");
+        const priorityLabel = document.createElement("label");
+        const priorityInput = document.createElement("input");
+
+        //Fill out label content
+        titleLabel.innerHTML = "Title";
+        descriptionLabel.innerHTML = "Description";
+        dueDateLabel.innerHTML = "Due Date";
+        priorityLabel.innerHTML = "Priority";
+
+        // Fill out necessary attributes
+        
+
+        // Nest items
+        content.appendChild(dialog);
+        dialog.appendChild(form);
+        form.appendChild(titleLabel);
+        form.appendChild(titleInput);
+        form.appendChild(descriptionLabel);
+        form.appendChild(descriptionInput);
+        form.appendChild(dueDateLabel);
+        form.appendChild(dueDateInput);
+        form.appendChild(priorityLabel);
+        form.appendChild(priorityInput);
+
+        return dialog;
+    }
+
     function showProjectInSideBar(project) {
         const projectToDisplay = document.createElement("button");
         projectToDisplay.innerHTML = project.name;
@@ -51,6 +93,6 @@ export default function domManip() {
     }
 
 
-    return { showProjectInSideBar, showTodoinDisplay, displayNewProject };
+    return { showProjectInSideBar, showTodoinDisplay, displayNewProject, displayInputDialog };
 
 }
