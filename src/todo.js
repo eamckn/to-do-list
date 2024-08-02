@@ -6,10 +6,10 @@ export default function toDo() {
 
     const create = function(title, description, duedate, priority) {
 
-        let checked = false;
+        let completed = false;
 
         const get = function() {
-            return { title, description, duedate, priority, checked };
+            return { title, description, duedate, priority, completed };
         }
 
         const updateDescription = function(newDescription) {
@@ -20,7 +20,11 @@ export default function toDo() {
             return title;
         }
 
-        return { title, description, duedate, priority, get, updateDescription, getTitle};
+        const changeCompletedStatus = function() {
+            completed = completed === false ? true : false;
+        }
+
+        return { title, description, duedate, priority, get, updateDescription, changeCompletedStatus};
 
     }
 

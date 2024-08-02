@@ -45,6 +45,12 @@ const controller = (function() {
     // Remove todos from default
     defaultProject.removeTodo(newTodo);
     console.log(defaultProject.get());
+    // Set todos as complete
+    personalTasks.addTodo(newTodo);
+    console.log(personalTasks.get())
+    console.log(newTodo.get());
+    newTodo.changeCompletedStatus();
+    console.log(newTodo.get());
 
     
 
