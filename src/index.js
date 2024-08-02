@@ -114,6 +114,8 @@ const controller = (function() {
     newTodoButton.addEventListener('click', makeNewTodo);
     newProjectButton.addEventListener('click', makeNewProject);
     
-    return { todo, proj, dom };
+    return { todo, proj, dom, currentProject };
     
 })();
+
+export { controller };

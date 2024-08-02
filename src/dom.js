@@ -1,6 +1,5 @@
-import project from "./project";
-
-const proj = project();
+import project from "./project.js";
+import { controller } from "./index.js";
 
 export default function domManip() {
 
@@ -13,7 +12,8 @@ export default function domManip() {
         projectToDisplay.innerHTML = project.name;
         sidebar.appendChild(projectToDisplay);
         projectToDisplay.addEventListener('click', function() {
-            displayProjectTodos(project)
+            displayProjectTodos(project);
+            updateCurrentProject(project);
         });
     }
 
@@ -30,7 +30,10 @@ export default function domManip() {
         const newProject = document.createElement("button");
         newProject.innerHTML = project.name;
         sidebar.appendChild(newProject);
-        newProject.addEventListener('click', displayProjectTodos(project));
+        newProject.addEventListener('click', function() {
+            displayProjectTodos(project);
+            updateCurrentProject(project);
+        });
     }
 
     function displayProjectTodos(project) {
@@ -45,6 +48,11 @@ export default function domManip() {
         while (display.firstChild) {
             display.removeChild(display.firstChild);
         }
+    }
+    
+    function updateCurrentProject(project) {
+        controller.currentProject = project;
+        console.log(controller.currentProject);
     }
 
     return { showProjectInSideBar, showTodoinDisplay, displayNewProject };
