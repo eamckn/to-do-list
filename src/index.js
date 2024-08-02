@@ -14,6 +14,10 @@ factory that will call the create to-do function
 
 */
 
+const content = document.querySelector("#content");
+const sidebar = document.querySelector("#sidebar");
+const display = document.querySelector("#display");
+
 
 const controller = (function() {
 
@@ -41,6 +45,7 @@ const controller = (function() {
     console.log(defaultProject.get());
     // Create new project
     const personalTasks = proj.create("Personal tasks");
+    allProjects.push(personalTasks);
     console.log(personalTasks.get());
     // Remove todos from default
     defaultProject.removeTodo(newTodo);
@@ -52,8 +57,14 @@ const controller = (function() {
     newTodo.changeCompletedStatus();
     console.log(newTodo.get());
 
-    
+    function displayAllProjects() {
+        for (const item of allProjects) {
+            dom.showProjectInSideBar(item);
+        }
+    }
 
+    document.addEventListener('DOMContentLoaded', displayAllProjects)
+    
     return { todo, proj, dom };
     
 })();

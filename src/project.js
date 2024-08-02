@@ -1,6 +1,4 @@
-import toDo from "./todo";
 
-const todoMod = toDo();
 
 export default function project() {
 
