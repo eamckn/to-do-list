@@ -44,3 +44,12 @@ const controller = (function() {
     const newTaskButton = document.querySelector("#create-todo");
 
     newTaskButton.addEventListener('click', controller.addNewToDo);
+
+/* Further implementation steps:
+
+ - Ensure that created todos are added to the currently selected project
+    - Create function that gets the current project
+    - Add the created todo to the current project
+- Create button to create new projects
+
+*/
