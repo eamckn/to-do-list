@@ -1,6 +1,7 @@
 import './style.css';
 import toDo from './todo.js';
 import project from './project.js';
+import domManip from './dom.js';
 
 //alert("It's working");
 
@@ -22,13 +23,29 @@ const controller = (function() {
 
     const proj = project();
 
+    const dom = domManip();
+
     const defaultProject = proj.getProject(proj.createProject('name'));
 
     const allProjects = [defaultProject];
 
-    return { allProjects, todo, proj, defaultProject };
+    const exampleTodo = todo.create("Ex. ToDo", "Desc", "1/1/0000", "high");
+
+    function addNewToDo() {
+        // Normally this will pull up dialog to input fields
+        // Function for that goes here
+        let newTodo = dom.createTodo();
+        dom.fillOutTodo(exampleTodo, newTodo);
+        dom.appendTodo(newTodo);
+    }
+
+    return { allProjects, todo, proj, defaultProject, addNewToDo };
     
 })();
+
+    const newTaskButton = document.querySelector("#create-todo");
+
+    newTaskButton.addEventListener('click', controller.addNewToDo);
 
 //console.log(controller.defaultProject);
 

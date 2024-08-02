@@ -4,11 +4,26 @@ export default function domManip() {
     const sidebar = document.querySelector("#sidebar");
     const display = document.querySelector("#display");
 
-    function createTask() {
+    function createTodo() {
 
-        let task = document.createElement("div");
-        task.className = "task";
+        let todoCard = document.createElement("div");
+        todoCard.className = "todo";
+
+        return todoCard;
+    }
+
+    function appendTodo(todoCard) {
+        display.appendChild(todoCard);
+    }
+
+    function fillOutTodo(todo, todoCard) {
+
+        for (const prop in todo) {
+            todoCard.innerHTML += `${prop}: ${todo[prop]}`;
+        }
 
     }
+
+    return { createTodo, appendTodo, fillOutTodo };
 
 }
