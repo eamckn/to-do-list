@@ -32,15 +32,15 @@ const controller = (function() {
     const exampleTodo = todo.create("Ex. ToDo", "Desc", "1/1/0000", "high");
 
     function addNewToDo() {
-        console.log(currentProject);
+        //console.log(currentProject);
         // Normally this will pull up dialog to input fields
         // Function for that goes here
         let newTodoDiv = dom.createTodo();
         let newTodo = todo.getUserInput();
-        console.log(newTodo);
+        //console.log(newTodo);
         // Add new todo to current project
         proj.addToProject(currentProject, newTodo);
-        console.log(currentProject);
+        //console.log(currentProject);
         dom.fillOutTodo(newTodo, newTodoDiv);
         dom.appendTodo(newTodoDiv);
     }
@@ -53,10 +53,10 @@ const controller = (function() {
 
     newTaskButton.addEventListener('click', controller.addNewToDo);
 
-/* Further implementation steps:
+/*
 
- - Ensure that created todos are added to the currently selected project
-    - Add the created todo to the current project
-- Create button to create new projects
+When I click a project, on the sidebar:
+    - I need the current project to update:
+        - How do I do that?
 
 */
