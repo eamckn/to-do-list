@@ -27,7 +27,7 @@ const controller = (function() {
 
     const allProjects = [defaultProject];
 
-    let currentProject = allProjects[0];
+    let currentProject = defaultProject;
 
     return { todo, proj, dom };
     
