@@ -2,6 +2,15 @@
 
 export default function toDo() {
 
+    function getUserInput() {
+        let title = prompt("What would you like to title your todo?");
+        let description = prompt("What's the description for this todo?");
+        let duedate = prompt("When is this due?");
+        let priority = prompt("Is this high or low priority?");
+
+        return create(title, description, duedate, priority);
+    }
+
     function create(title, description, duedate, priority) {
     
         let completed = false;
@@ -21,6 +30,6 @@ export default function toDo() {
         todo.completed = true;
     }
 
-    return { create, changePriority, changeDescription, markComplete };
+    return { create, changePriority, changeDescription, markComplete, getUserInput };
 
 }

@@ -27,14 +27,22 @@ const controller = (function() {
 
     const allProjects = [defaultProject];
 
+    let currentProject = allProjects[0];
+
     const exampleTodo = todo.create("Ex. ToDo", "Desc", "1/1/0000", "high");
 
     function addNewToDo() {
+        console.log(currentProject);
         // Normally this will pull up dialog to input fields
         // Function for that goes here
-        let newTodo = dom.createTodo();
-        dom.fillOutTodo(dom.getUserInput(), newTodo);
-        dom.appendTodo(newTodo);
+        let newTodoDiv = dom.createTodo();
+        let newTodo = todo.getUserInput();
+        console.log(newTodo);
+        // Add new todo to current project
+        proj.addToProject(currentProject, newTodo);
+        console.log(currentProject);
+        dom.fillOutTodo(newTodo, newTodoDiv);
+        dom.appendTodo(newTodoDiv);
     }
 
     return { allProjects, todo, proj, defaultProject, addNewToDo };
@@ -48,7 +56,6 @@ const controller = (function() {
 /* Further implementation steps:
 
  - Ensure that created todos are added to the currently selected project
-    - Create function that gets the current project
     - Add the created todo to the current project
 - Create button to create new projects
 
