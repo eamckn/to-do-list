@@ -2,34 +2,28 @@
 
 export default function toDo() {
 
-    let todo = {}
+    //let proj = project();
 
-    let proj = project();
+    const create = function(title, description, duedate, priority) {
 
-    function create(title, description, duedate, priority) {
-        todo.title = title;
-        todo.description = description;
-        todo.duedate = duedate;
-        todo.priority = priority;
-        todo.checked = false;
+        let checked = false;
+
+        const get = function() {
+            return { title, description, duedate, priority, checked };
+        }
+
+        const updateDescription = function(newDescription) {
+            description = newDescription;
+        }
+
+        const getTitle = function() {
+            return title;
+        }
+
+        return { title, description, duedate, priority, get, updateDescription, getTitle};
+
     }
 
-    function updateDescription(newDescription) {
-        todo.description = newDescription;
-    }
-
-    function updateChecked() {
-        todo.checked = todo.checked === false ? true : false;
-    }
-
-    function get() {
-        return todo;
-    }
-
-    function remove() {
-        todo = {};
-    }
-
-    return { create, updateDescription, updateChecked, get, remove};
+    return { create };
 
 }

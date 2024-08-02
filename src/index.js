@@ -23,11 +23,30 @@ const controller = (function() {
 
     const dom = domManip();
 
-    const defaultProject = proj.getProject(proj.createProject('name'));
+    const defaultProject = proj.create('Default');
 
     const allProjects = [defaultProject];
 
     let currentProject = defaultProject;
+
+    // Console logs for testing
+    // Create 2 new todos
+    let newTodo = todo.create("Clean room", "It's messy.", "Tomorrow", "high");
+    let otherTodo = todo.create("Call mom", "You need to talk about your plane ticket.", "Tomorrow", "high");
+    console.log(newTodo.get());
+    console.log(otherTodo.get());
+    // Add them to the default project
+    defaultProject.addTodo(newTodo);
+    defaultProject.addTodo(otherTodo);
+    console.log(defaultProject.get());
+    // Create new project
+    const personalTasks = proj.create("Personal tasks");
+    console.log(personalTasks.get());
+    // Remove todos from default
+    defaultProject.removeTodo(newTodo);
+    console.log(defaultProject.get());
+
+    
 
     return { todo, proj, dom };
     

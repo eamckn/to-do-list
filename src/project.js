@@ -1,22 +1,39 @@
+import toDo from "./todo";
+
+const todoMod = toDo();
+
 export default function project() {
 
-    let project = {}
+    const create = function(name) {
 
-    function create(name) {
-        project.name = name;
-        project.todos = new Array();
+        let todos = new Array();
+
+        const get = function() {
+            return { name, todos }
+        }
+
+        const addTodo = function(todo) {
+            todos.push(todo);
+        }
+
+        const removeTodo = function(todo) {
+            let todoTitle = todo.title;
+
+            let index = 0;
+            for (const item of todos) {
+                if (todoTitle === item.title) {
+                    console.log(`Found todo to remove in project ${get().name}`);
+                    todos.splice(index, 1);
+                    return;
+                }
+                else index++;
+            }
+        }
+
+        return { name, todos, get, addTodo, removeTodo };
+
     }
 
-    function get() {
-        return project;
-    }
-
-    function updateToDos(todo) {
-        project.todos.push(todo);
-    }
-
-    function remove() {
-        project = {};
-    }
+    return { create };
 
 }
