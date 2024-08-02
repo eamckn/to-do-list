@@ -12,6 +12,9 @@ export default function domManip() {
         const projectToDisplay = document.createElement("button");
         projectToDisplay.innerHTML = project.name;
         sidebar.appendChild(projectToDisplay);
+        projectToDisplay.addEventListener('click', function() {
+            displayProjectTodos(project)
+        });
     }
 
     function showTodoinDisplay(todo) {
@@ -27,6 +30,21 @@ export default function domManip() {
         const newProject = document.createElement("button");
         newProject.innerHTML = project.name;
         sidebar.appendChild(newProject);
+        newProject.addEventListener('click', displayProjectTodos(project));
+    }
+
+    function displayProjectTodos(project) {
+        clearDisplay();
+        console.log(project);
+        for (const item of project.todos) {
+            showTodoinDisplay(item);
+        }
+    }
+
+    function clearDisplay() {
+        while (display.firstChild) {
+            display.removeChild(display.firstChild);
+        }
     }
 
     return { showProjectInSideBar, showTodoinDisplay, displayNewProject };

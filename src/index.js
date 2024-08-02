@@ -96,11 +96,13 @@ const controller = (function() {
 
     function makeNewProject() {
         let name = getProjectName();
-        let newProject = proj.create(name);
-        allProjects.push(newProject);
-        dom.displayNewProject(newProject);
-        console.log(newProject);
-        console.log(allProjects);
+        if (name) {
+            let newProject = proj.create(name);
+            allProjects.push(newProject);
+            dom.displayNewProject(newProject);
+            console.log(newProject);
+            console.log(allProjects);
+        }
     }
 
     function getProjectName() {
