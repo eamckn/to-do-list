@@ -25,14 +25,25 @@ export default function domManip() {
         const priorityLabel = document.createElement("label");
         const priorityInput = document.createElement("input");
 
-        //Fill out label content
+        // Add label content
         titleLabel.innerHTML = "Title";
         descriptionLabel.innerHTML = "Description";
         dueDateLabel.innerHTML = "Due Date";
         priorityLabel.innerHTML = "Priority";
 
-        // Fill out necessary attributes
-        
+        // Add necessary attributes
+        form.setAttribute("method", "dialog");
+
+        titleLabel.setAttribute("for", "title");
+        titleInput.setAttribute("type", "text");
+        titleInput.setAttribute("id", "title");
+        titleInput.setAttribute("name", "title");
+
+        descriptionLabel.setAttribute("for", "description");
+        descriptionInput.setAttribute("rows", "8");
+        descriptionInput.setAttribute("cols", "20");
+        descriptionInput.setAttribute("id", "description");
+        descriptionInput.setAttribute("name", "description");
 
         // Nest items
         content.appendChild(dialog);
