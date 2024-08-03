@@ -53,6 +53,9 @@ header {
 
     display: flex;
     flex-direction: column;
+
+    gap: 1rem;
+    padding: 2rem;
 }
 
 div.todo {
@@ -62,8 +65,10 @@ div.todo {
     padding: 1rem;
     border: 1px solid black;
     gap: 1rem;
+    border-radius: 10px;
 
     display: flex;
+    flex-wrap: wrap;
 }
 
 .priority-container {
@@ -90,6 +95,18 @@ div.todo {
 
 .todo-info .description.paragraph {
     width: 30%;
+}
+
+.options-container {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+}
+
+.trash-container {
+    height: 50%;
+    width: 2rem;
 }
 
 dialog {

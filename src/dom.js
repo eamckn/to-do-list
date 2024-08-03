@@ -1,5 +1,7 @@
 //import project from "./project.js";
 import { controller } from "./index.js";
+import trashCan from './svgs/trash-can-outline.svg';
+import editPencil from './svgs/file-edit-outline.svg';
 
 export default function domManip() {
 
@@ -163,8 +165,21 @@ export default function domManip() {
         todoInfo.appendChild(duedateParagraph);
         todoInfo.appendChild(descriptionParagraph);
 
+        const optionsContainer = document.createElement("div");
+        optionsContainer.className = "options-container";
+        const trashDiv = document.createElement("div");
+        trashDiv.className = "trash-container";
+        const trashIcon = new Image();
+        trashIcon.src = trashCan;
+        const editDiv = document.createElement("div");
+        editDiv.className = "edit-container";
+        trashDiv.appendChild(trashIcon);
+        optionsContainer.appendChild(trashDiv);
+
+
         todoToDisplay.appendChild(priorityContainer);
         todoToDisplay.appendChild(todoInfo);
+        todoToDisplay.appendChild(optionsContainer);
 
         setPriorityIndicatorColor(priorityIndicator, todo);
         display.appendChild(todoToDisplay);
