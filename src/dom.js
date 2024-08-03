@@ -168,7 +168,7 @@ export default function domManip() {
 
         setPriorityIndicatorColor(priorityIndicator, todo);
         display.appendChild(todoToDisplay);
-        todoToDisplay.addEventListener('click', function() {
+        todoInfo.addEventListener('click', function() {
             toggleTodoDescription(descriptionParagraph);
         })
     }
