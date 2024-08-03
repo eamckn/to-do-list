@@ -142,17 +142,27 @@ export default function domManip() {
         todoToDisplay.className = "todo";
         const titleParagraph = document.createElement("p");
         titleParagraph.innerHTML = `${todo.title}`;
-        const descriptionParagraph = document.createElement("p");
-        descriptionParagraph.innerHTML = `${todo.description}`;
+        titleParagraph.className = "title paragraph";
         const duedateParagraph = document.createElement("p");
         duedateParagraph.innerHTML = `${todo.duedate}`;
-        const priorityParagraph = document.createElement("p");
-        priorityParagraph.innerHTML = `${todo.priority}`
+        duedateParagraph.className = "duedate paragraph";
+        const descriptionParagraph = document.createElement("p");
+        descriptionParagraph.innerHTML = `${todo.description}`;
+        descriptionParagraph.className = "description paragraph";
+        descriptionParagraph.style.display = "none";
         todoToDisplay.appendChild(titleParagraph);
-        todoToDisplay.appendChild(descriptionParagraph);
         todoToDisplay.appendChild(duedateParagraph);
-        todoToDisplay.appendChild(priorityParagraph);
+        todoToDisplay.appendChild(descriptionParagraph);
         display.appendChild(todoToDisplay);
+        todoToDisplay.addEventListener('click', function() {
+            toggleTodoDescription(descriptionParagraph);
+        })
+    }
+
+    function toggleTodoDescription(descriptionParagraph) {
+        descriptionParagraph.style.display = descriptionParagraph.style.display === "none"
+                                                                                ? "block"
+                                                                                : "none"; 
     }
 
     function displayNewProject(project) {
