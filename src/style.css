@@ -56,14 +56,18 @@ header {
 }
 
 div.todo {
-    flex: auto;
+    flex: 0 1 auto;
 
-    max-height: 20%;
-    padding: 1rem;
+    height: auto;
+    padding: 2rem;
     border: 1px solid black;
 
     display: flex;
     flex-direction: column;
+}
+
+.todo .title.paragraph {
+    font-size: 2rem;
 }
 
 dialog {
