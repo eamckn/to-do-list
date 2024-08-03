@@ -39,6 +39,7 @@ export default function domManip() {
         const highPriorityLabel = document.createElement("label");
         const highPriorityInput = document.createElement("input");
 
+        const addButton = document.createElement("button");
 
         // Add label content
         titleLabel.innerHTML = "Title";
@@ -51,6 +52,8 @@ export default function domManip() {
         lowPriorityLabel.innerHTML = "Low";
         medPriorityLabel.innerHTML = "Medium";
         highPriorityLabel.innerHTML = "High";
+
+        addButton.innerHTML = "Add";
 
         // Add necessary attributes
         form.setAttribute("method", "dialog");
@@ -85,8 +88,6 @@ export default function domManip() {
         highPriorityInput.setAttribute("value", "high");
 
         // Nest items
-        content.appendChild(dialog);
-
         fieldset.appendChild(legend);
         fieldset.appendChild(ul);
         ul.appendChild(firstListItem);
@@ -99,7 +100,6 @@ export default function domManip() {
         thirdListItem.appendChild(highPriorityLabel);
         thirdListItem.appendChild(highPriorityInput);
 
-        dialog.appendChild(form);
         form.appendChild(titleLabel);
         form.appendChild(titleInput);
         form.appendChild(descriptionLabel);
@@ -107,6 +107,22 @@ export default function domManip() {
         form.appendChild(dueDateLabel);
         form.appendChild(dueDateInput);
         form.appendChild(fieldset);
+        form.appendChild(addButton);
+
+        dialog.appendChild(form);
+        content.appendChild(dialog);
+
+        // Add event listener for button to save values
+        addButton.addEventListener('click', function() {
+            let title = titleInput.value;
+            let description = descriptionInput.value;
+            let duedate = dueDateInput.value;
+            let priority = document.querySelector("input[name = 'priority']:checked").value;
+
+            //console.log( { title, description, duedate, priority } );
+
+            controller.makeNewTodo( { title, description, duedate, priority });
+        })
 
         return dialog;
     }

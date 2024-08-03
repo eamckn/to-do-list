@@ -75,9 +75,8 @@ const controller = (function() {
         }
     }
 
-    function makeNewTodo() {
-        let todoFields = getTodoFields();
-        newTodo = todo.create(todoFields.title, todoFields.description, todoFields.duedate, todoFields.priority);
+    function makeNewTodo(todoFromModal) {
+        newTodo = todo.create(todoFromModal.title, todoFromModal.description, todoFromModal.duedate, todoFromModal.priority);
         currentProject.addTodo(newTodo);
         dom.showTodoinDisplay(newTodo);
         //console.log(currentProject);
@@ -85,15 +84,7 @@ const controller = (function() {
     }
 
     function getTodoFields() {
-        /*
-        let title = prompt("Input title:");
-        let description = prompt("Input description");
-        let duedate = prompt("Input due date");
-        let priority = prompt("Input priority:")
-        */
         dom.displayInputDialog();
-
-        return { title, description, duedate, priority }
     }
 
     function makeNewProject() {
@@ -118,10 +109,10 @@ const controller = (function() {
 
     document.addEventListener('DOMContentLoaded', displayAllProjects)
     document.addEventListener('DOMContentLoaded', displayCurrentProjectTodos)
-    newTodoButton.addEventListener('click', makeNewTodo);
+    newTodoButton.addEventListener('click', getTodoFields);
     newProjectButton.addEventListener('click', makeNewProject);
     
-    return { todo, proj, dom, updateCurrentProject };
+    return { todo, proj, dom, updateCurrentProject, makeNewTodo };
     
 })();
 
