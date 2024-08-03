@@ -70,6 +70,10 @@ div.todo {
     font-size: 2rem;
 }
 
+.todo .description.paragraph {
+    width: 30%;
+}
+
 dialog {
     position: absolute;
     left: 50%;

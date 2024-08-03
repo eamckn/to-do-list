@@ -153,10 +153,21 @@ export default function domManip() {
         todoToDisplay.appendChild(titleParagraph);
         todoToDisplay.appendChild(duedateParagraph);
         todoToDisplay.appendChild(descriptionParagraph);
+        setTodoBackgroundColor(todoToDisplay, todo);
         display.appendChild(todoToDisplay);
         todoToDisplay.addEventListener('click', function() {
             toggleTodoDescription(descriptionParagraph);
         })
+    }
+
+    function setTodoBackgroundColor(todoToDisplay, todo) {
+        todoToDisplay.style.backgroundColor = getTodoBackgroundColor(todo.priority);
+    }
+
+    function getTodoBackgroundColor(priority) {
+        if (priority === "low") return "green";
+        else if (priority === "medium") return "yellow";
+        else if (priority === "high") return "red";
     }
 
     function toggleTodoDescription(descriptionParagraph) {

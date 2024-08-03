@@ -37,7 +37,7 @@ const controller = (function() {
 
     // Console logs for testing
     // Create 2 new todos
-    let defaultTodo = todo.create("Default", "Here's my description", "Never", "low")
+    let defaultTodo = todo.create("First ever task", "Here's my description. It's really really long. I made it this long to test out how descriptions will wrap.", "Tomorrow", "low");
     let newTodo = todo.create("Clean room", "It's messy.", "Tomorrow", "high");
     let otherTodo = todo.create("Call mom", "You need to talk about your plane ticket.", "Tomorrow", "high");
     //console.log(newTodo.get());
