@@ -139,6 +139,7 @@ export default function domManip() {
 
     function showTodoinDisplay(todo) {
         const todoToDisplay = document.createElement("div");
+        todoToDisplay.className = "todo";
         todoToDisplay.innerHTML = `Title: ${todo.title} \n
                                    Description: ${todo.description}
                                    Due Date: ${todo.duedate}
