@@ -140,10 +140,18 @@ export default function domManip() {
     function showTodoinDisplay(todo) {
         const todoToDisplay = document.createElement("div");
         todoToDisplay.className = "todo";
-        todoToDisplay.innerHTML = `Title: ${todo.title} \n
-                                   Description: ${todo.description}
-                                   Due Date: ${todo.duedate}
-                                   Priority: ${todo.priority}`
+        const titleParagraph = document.createElement("p");
+        titleParagraph.innerHTML = `${todo.title}`;
+        const descriptionParagraph = document.createElement("p");
+        descriptionParagraph.innerHTML = `${todo.description}`;
+        const duedateParagraph = document.createElement("p");
+        duedateParagraph.innerHTML = `${todo.duedate}`;
+        const priorityParagraph = document.createElement("p");
+        priorityParagraph.innerHTML = `${todo.priority}`
+        todoToDisplay.appendChild(titleParagraph);
+        todoToDisplay.appendChild(descriptionParagraph);
+        todoToDisplay.appendChild(duedateParagraph);
+        todoToDisplay.appendChild(priorityParagraph);
         display.appendChild(todoToDisplay);
     }
 

@@ -50,6 +50,20 @@ header {
     flex: auto;
 
     background-color: tan;
+
+    display: flex;
+    flex-direction: column;
+}
+
+div.todo {
+    flex: auto;
+
+    max-height: 20%;
+    padding: 1rem;
+    border: 1px solid black;
+
+    display: flex;
+    flex-direction: column;
 }
 
 dialog {
