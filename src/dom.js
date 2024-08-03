@@ -140,6 +140,15 @@ export default function domManip() {
     function showTodoinDisplay(todo) {
         const todoToDisplay = document.createElement("div");
         todoToDisplay.className = "todo";
+
+        const priorityContainer = document.createElement("div");
+        priorityContainer.className = "priority-container";
+        const priorityIndicator = document.createElement("button");
+        priorityIndicator.className = "priority-button";
+        priorityContainer.appendChild(priorityIndicator);
+
+        const todoInfo = document.createElement("div");
+        todoInfo.className = "todo-info";
         const titleParagraph = document.createElement("p");
         titleParagraph.innerHTML = `${todo.title}`;
         titleParagraph.className = "title paragraph";
@@ -150,21 +159,25 @@ export default function domManip() {
         descriptionParagraph.innerHTML = `${todo.description}`;
         descriptionParagraph.className = "description paragraph";
         descriptionParagraph.style.display = "none";
-        todoToDisplay.appendChild(titleParagraph);
-        todoToDisplay.appendChild(duedateParagraph);
-        todoToDisplay.appendChild(descriptionParagraph);
-        setTodoBackgroundColor(todoToDisplay, todo);
+        todoInfo.appendChild(titleParagraph);
+        todoInfo.appendChild(duedateParagraph);
+        todoInfo.appendChild(descriptionParagraph);
+
+        todoToDisplay.appendChild(priorityContainer);
+        todoToDisplay.appendChild(todoInfo);
+
+        setPriorityIndicatorColor(priorityIndicator, todo);
         display.appendChild(todoToDisplay);
         todoToDisplay.addEventListener('click', function() {
             toggleTodoDescription(descriptionParagraph);
         })
     }
 
-    function setTodoBackgroundColor(todoToDisplay, todo) {
-        todoToDisplay.style.backgroundColor = getTodoBackgroundColor(todo.priority);
+    function setPriorityIndicatorColor(priorityIndicator, todo) {
+        priorityIndicator.style.backgroundColor = getPriorityIndicatorColor(todo.priority);
     }
 
-    function getTodoBackgroundColor(priority) {
+    function getPriorityIndicatorColor(priority) {
         if (priority === "low") return "green";
         else if (priority === "medium") return "yellow";
         else if (priority === "high") return "red";

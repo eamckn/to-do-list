@@ -59,18 +59,30 @@ div.todo {
     flex: 0 1 auto;
 
     height: auto;
-    padding: 2rem;
+    padding: 1rem;
     border: 1px solid black;
+    gap: 1rem;
 
+    display: flex;
+}
+
+.priority-button {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+    border: none;
+}
+
+.todo .todo-info {
     display: flex;
     flex-direction: column;
 }
 
-.todo .title.paragraph {
+.todo-info .title.paragraph {
     font-size: 2rem;
 }
 
-.todo .description.paragraph {
+.todo-info .description.paragraph {
     width: 30%;
 }
 
