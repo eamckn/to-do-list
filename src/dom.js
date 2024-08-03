@@ -1,4 +1,4 @@
-import project from "./project.js";
+//import project from "./project.js";
 import { controller } from "./index.js";
 
 export default function domManip() {
@@ -16,20 +16,41 @@ export default function domManip() {
         // Create dialog elements
         const dialog = document.createElement("dialog");
         const form = document.createElement("form");
+
         const titleLabel = document.createElement("label");
         const titleInput = document.createElement("input");
+
         const descriptionLabel = document.createElement("label");
         const descriptionInput = document.createElement("textarea");
+
         const dueDateLabel = document.createElement("label");
         const dueDateInput = document.createElement("input");
-        const priorityLabel = document.createElement("label");
-        const priorityInput = document.createElement("input");
+
+        const fieldset = document.createElement("fieldset");
+        const legend = document.createElement("legend");
+        const ul = document.createElement("ul");
+        const firstListItem = document.createElement("li");
+        const lowPriorityLabel = document.createElement("label");
+        const lowPriorityInput = document.createElement("input");
+        const secondListItem = document.createElement("li");
+        const medPriorityLabel = document.createElement("label");
+        const medPriorityInput = document.createElement("input");
+        const thirdListItem = document.createElement("li");
+        const highPriorityLabel = document.createElement("label");
+        const highPriorityInput = document.createElement("input");
+
 
         // Add label content
         titleLabel.innerHTML = "Title";
+
         descriptionLabel.innerHTML = "Description";
+
         dueDateLabel.innerHTML = "Due Date";
-        priorityLabel.innerHTML = "Priority";
+
+        legend.innerHTML = "Priority";
+        lowPriorityLabel.innerHTML = "Low";
+        medPriorityLabel.innerHTML = "Medium";
+        highPriorityLabel.innerHTML = "High";
 
         // Add necessary attributes
         form.setAttribute("method", "dialog");
@@ -45,8 +66,39 @@ export default function domManip() {
         descriptionInput.setAttribute("id", "description");
         descriptionInput.setAttribute("name", "description");
 
+        lowPriorityLabel.setAttribute("for", "low");
+        lowPriorityInput.setAttribute("type", "radio");
+        lowPriorityInput.setAttribute("id", "low");
+        lowPriorityInput.setAttribute("name", "priority");
+        lowPriorityInput.setAttribute("value", "low");
+    
+        medPriorityLabel.setAttribute("for", "medium");
+        medPriorityInput.setAttribute("type", "radio");
+        medPriorityInput.setAttribute("id", "medium");
+        medPriorityInput.setAttribute("name", "priority");
+        medPriorityInput.setAttribute("value", "medium");
+        
+        highPriorityLabel.setAttribute("for", "high");
+        highPriorityInput.setAttribute("type", "radio");
+        highPriorityInput.setAttribute("id", "high");
+        highPriorityInput.setAttribute("name", "priority");
+        highPriorityInput.setAttribute("value", "high");
+
         // Nest items
         content.appendChild(dialog);
+
+        fieldset.appendChild(legend);
+        fieldset.appendChild(ul);
+        ul.appendChild(firstListItem);
+        ul.appendChild(secondListItem);
+        ul.appendChild(thirdListItem);
+        firstListItem.appendChild(lowPriorityLabel);
+        firstListItem.appendChild(lowPriorityInput);
+        secondListItem.appendChild(medPriorityLabel);
+        secondListItem.appendChild(medPriorityInput);
+        thirdListItem.appendChild(highPriorityLabel);
+        thirdListItem.appendChild(highPriorityInput);
+
         dialog.appendChild(form);
         form.appendChild(titleLabel);
         form.appendChild(titleInput);
@@ -54,8 +106,7 @@ export default function domManip() {
         form.appendChild(descriptionInput);
         form.appendChild(dueDateLabel);
         form.appendChild(dueDateInput);
-        form.appendChild(priorityLabel);
-        form.appendChild(priorityInput);
+        form.appendChild(fieldset);
 
         return dialog;
     }
