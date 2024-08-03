@@ -66,6 +66,12 @@ div.todo {
     display: flex;
 }
 
+.priority-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .priority-button {
     width: 2rem;
     height: 2rem;
