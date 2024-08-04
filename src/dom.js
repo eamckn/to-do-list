@@ -9,8 +9,19 @@ export default function domManip() {
     const sidebar = document.querySelector("#sidebar");
     const display = document.querySelector("#display");
 
-    function displayDialog() {
+    function displayDialogForInput() {
         let dialog = buildDialog();
+        // Add event listener for button to save values
+        dialog.querySelector("button").addEventListener('click', function() {
+            let title = dialog.querySelector("input[id = 'title']").value;
+            let description = dialog.querySelector("textarea[id = 'description']").value;
+            let duedate = dialog.querySelector("input[id = 'duedate']").value;
+            let priority = dialog.querySelector("input[name = 'priority']:checked").value;
+
+            //console.log( { title, description, duedate, priority } );
+
+            controller.makeNewTodo( { title, description, duedate, priority });
+        })
         dialog.showModal();
     }
 
@@ -71,6 +82,11 @@ export default function domManip() {
         descriptionInput.setAttribute("id", "description");
         descriptionInput.setAttribute("name", "description");
 
+        dueDateLabel.setAttribute("for", "duedate");
+        dueDateInput.setAttribute("type", "text");
+        dueDateInput.setAttribute("id", "duedate");
+        dueDateInput.setAttribute("name", "duedate");
+
         lowPriorityLabel.setAttribute("for", "low");
         lowPriorityInput.setAttribute("type", "radio");
         lowPriorityInput.setAttribute("id", "low");
@@ -113,18 +129,6 @@ export default function domManip() {
 
         dialog.appendChild(form);
         content.appendChild(dialog);
-
-        // Add event listener for button to save values
-        addButton.addEventListener('click', function() {
-            let title = titleInput.value;
-            let description = descriptionInput.value;
-            let duedate = dueDateInput.value;
-            let priority = dialog.querySelector("input[name = 'priority']:checked").value;
-
-            //console.log( { title, description, duedate, priority } );
-
-            controller.makeNewTodo( { title, description, duedate, priority });
-        })
 
         return dialog;
     }
@@ -242,6 +246,6 @@ export default function domManip() {
     }
 
 
-    return { showProjectInSideBar, showTodoinDisplay, displayNewProject, displayDialog };
+    return { showProjectInSideBar, showTodoinDisplay, displayNewProject, displayDialogForInput };
 
 }
