@@ -94,8 +94,40 @@ button#create-project {
     background-color: rgba(0, 0, 0, .2) !important;
 }
 
-#display {
+#main {
     width: 75%;
+    height: 100%;
+
+    flex: auto;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#display-header {
+    flex: auto;
+
+    height: 10%;
+    width: auto;
+
+    padding: 1rem 2rem;
+    background-color: var(--skyblue-med);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#current-project {
+    font-size: 2rem;
+    font-weight: 700;
+
+    padding-bottom: .5rem;
+    border-bottom: 4px solid black;
+}
+
+#display {
+    width: 100%;
     height: 100%;
     background-color: var(--skyblue-med);
 

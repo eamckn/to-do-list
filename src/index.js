@@ -106,8 +106,13 @@ const controller = (function() {
         }
     }
 
+    function displayCurrentProject() {
+        dom.showCurrentProjectInDisplay(currentProject);
+    }
+
     document.addEventListener('DOMContentLoaded', displayAllProjects)
     document.addEventListener('DOMContentLoaded', displayCurrentProjectTodos)
+    document.addEventListener('DOMContentLoaded', displayCurrentProject());
     newTodoButton.addEventListener('click', getTodoFields);
     newProjectButton.addEventListener('click', getProjectName);
     allTodosButton.addEventListener('click', function() {

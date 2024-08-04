@@ -321,9 +321,14 @@ export default function domManip() {
         }
     }
 
+    function showCurrentProjectInDisplay(currentProject) {
+        let currentProjectName = document.querySelector("p#current-project");
+        currentProjectName.innerHTML = currentProject.name;
+    }
+
 
     return { showProjectInSideBar, showTodoinDisplay, displayNewProject, 
             displayDialogForInput, editTodoInDisplay, clearDisplay,
-            displayDialogForProject };
+            displayDialogForProject, showCurrentProjectInDisplay };
 
 }
