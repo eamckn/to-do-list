@@ -9,12 +9,12 @@ export default function domManip() {
     const sidebar = document.querySelector("#sidebar");
     const display = document.querySelector("#display");
 
-    function displayInputDialog() {
-        let dialog = buildInputDialog();
+    function displayDialog() {
+        let dialog = buildDialog();
         dialog.showModal();
     }
 
-    function buildInputDialog() {
+    function buildDialog() {
         // Create dialog elements
         const dialog = document.createElement("dialog");
         const form = document.createElement("form");
@@ -119,7 +119,7 @@ export default function domManip() {
             let title = titleInput.value;
             let description = descriptionInput.value;
             let duedate = dueDateInput.value;
-            let priority = document.querySelector("input[name = 'priority']:checked").value;
+            let priority = dialog.querySelector("input[name = 'priority']:checked").value;
 
             //console.log( { title, description, duedate, priority } );
 
@@ -242,6 +242,6 @@ export default function domManip() {
     }
 
 
-    return { showProjectInSideBar, showTodoinDisplay, displayNewProject, displayInputDialog };
+    return { showProjectInSideBar, showTodoinDisplay, displayNewProject, displayDialog };
 
 }

@@ -84,7 +84,7 @@ const controller = (function() {
     }
 
     function getTodoFields() {
-        dom.displayInputDialog();
+        dom.displayDialog();
     }
 
     function makeNewProject() {
