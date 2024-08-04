@@ -52,6 +52,17 @@ header {
     gap: 1rem;
 }
 
+#sidebar button#all-todos {
+    font-size: 1.5rem;
+    font-weight: 700;
+
+    background-color: var(--skyblue-med);
+    border: none;
+
+    padding: 1.5rem;
+    border-radius: 2rem;
+}
+
 #sidebar #projects {
     display: flex;
     gap: 2rem;
@@ -69,7 +80,7 @@ button#create-project {
     border: none;
 }
 
-#sidebar button:not(#create-project) {
+#sidebar div#projects ~ button {
     font-size: 1.15rem;;
 
     padding: 1rem;
