@@ -18,10 +18,25 @@ export default function domManip() {
             let duedate = dialog.querySelector("input[id = 'duedate']").value;
             let priority = dialog.querySelector("input[name = 'priority']:checked").value;
 
-            //console.log( { title, description, duedate, priority } );
-
             controller.makeNewTodo( { title, description, duedate, priority });
         })
+        dialog.showModal();
+    }
+
+    function displayDialogForEditing(title, description, duedate, priority) {
+        let dialog = buildDialog();
+        dialog.querySelector("input[id = 'title']").value = title;
+        dialog.querySelector("textarea[id = 'description']").value = description;
+        dialog.querySelector("input[id = 'duedate']").value = duedate;
+        if (priority === "low") {
+            dialog.querySelector("input[id = 'low']").checked = true;
+        }
+        else if (priority === "medium") {
+            dialog.querySelector("input[id = 'medium']").checked = true;
+        }
+        else if (priority === "high") {
+            dialog.querySelector("input[id = 'high']").checked = true;
+        }
         dialog.showModal();
     }
 
@@ -202,6 +217,9 @@ export default function domManip() {
         trashIcon.addEventListener('click', function() {
             display.removeChild(todoToDisplay);
             controller.removeFromCurrentProject(todo);
+        })
+        editIcon.addEventListener('click', function() {
+            displayDialogForEditing(todo.title, todo.description, todo.duedate, todo.priority);
         })
     }
 
