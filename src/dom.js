@@ -23,21 +23,43 @@ export default function domManip() {
         dialog.showModal();
     }
 
-    function displayDialogForEditing(title, description, duedate, priority) {
+    function displayDialogForEditing(todo, todoToDisplay) {
         let dialog = buildDialog();
-        dialog.querySelector("input[id = 'title']").value = title;
-        dialog.querySelector("textarea[id = 'description']").value = description;
-        dialog.querySelector("input[id = 'duedate']").value = duedate;
-        if (priority === "low") {
+        dialog.querySelector("input[id = 'title']").value = todo.title;
+        dialog.querySelector("textarea[id = 'description']").value = todo.description;
+        dialog.querySelector("input[id = 'duedate']").value = todo.duedate;
+        if (todo.priority === "low") {
             dialog.querySelector("input[id = 'low']").checked = true;
         }
-        else if (priority === "medium") {
+        else if (todo.priority === "medium") {
             dialog.querySelector("input[id = 'medium']").checked = true;
         }
-        else if (priority === "high") {
+        else if (todo.priority === "high") {
             dialog.querySelector("input[id = 'high']").checked = true;
         }
         dialog.showModal();
+        dialog.querySelector("button").addEventListener('click', function() {
+            let title = dialog.querySelector("input[id = 'title']").value;
+            let description = dialog.querySelector("textarea[id = 'description']").value;
+            let duedate = dialog.querySelector("input[id = 'duedate']").value;
+            let priority = dialog.querySelector("input[name = 'priority']:checked").value;
+
+            controller.editTodo(todo, { title, description, duedate, priority });
+            editTodoInDisplay(todoToDisplay, { title, description, duedate, priority });
+
+        })
+    }
+
+    function editTodoInDisplay(todoToDisplay, newTodoItem) {
+        let titleParagraph = todoToDisplay.querySelector(".todo-info p:nth-child(1)");
+        let duedateParagraph = todoToDisplay.querySelector(".todo-info p:nth-child(2)");
+        let descriptionParagraph = todoToDisplay.querySelector(".todo-info p:nth-child(3)");
+        let priorityIndicator = todoToDisplay.querySelector(".priority-container button");
+
+        titleParagraph.innerHTML = newTodoItem.title;
+        duedateParagraph.innerHTML = newTodoItem.duedate;
+        descriptionParagraph.innerHTML = newTodoItem.description;
+        setPriorityIndicatorColor(priorityIndicator, newTodoItem);
     }
 
     function buildDialog() {
@@ -219,7 +241,7 @@ export default function domManip() {
             controller.removeFromCurrentProject(todo);
         })
         editIcon.addEventListener('click', function() {
-            displayDialogForEditing(todo.title, todo.description, todo.duedate, todo.priority);
+            displayDialogForEditing(todo, todoToDisplay);
         })
     }
 
@@ -264,6 +286,6 @@ export default function domManip() {
     }
 
 
-    return { showProjectInSideBar, showTodoinDisplay, displayNewProject, displayDialogForInput };
+    return { showProjectInSideBar, showTodoinDisplay, displayNewProject, displayDialogForInput, editTodoInDisplay };
 
 }

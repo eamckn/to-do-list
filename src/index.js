@@ -3,17 +3,6 @@ import toDo from './todo.js';
 import project from './project.js';
 import domManip from './dom.js';
 
-/* Project brainstorm
-
-- I want each to-do item to have a title, description, duedate, and priority listing.
-- I want the creation of each to-do to be a factory that returns an object with those values.
-- I also want a separate function to handle creating each item.
-- I want to first start with making sure that my objects are being created appropriately
-- I'm going to first create the factory that will create and return to-dos, as well as the
-factory that will call the create to-do function
-
-*/
-
 const content = document.querySelector("#content");
 const sidebar = document.querySelector("#sidebar");
 const display = document.querySelector("#display");
@@ -35,33 +24,20 @@ const controller = (function() {
 
     let currentProject = defaultProject;
 
-    // Console logs for testing
     // Create 2 new todos
     let defaultTodo = todo.create("First ever task", "Here's my description. It's really really long. I made it this long to test out how descriptions will wrap.", "Tomorrow", "low");
     let newTodo = todo.create("Clean room", "It's messy.", "Tomorrow", "high");
     let otherTodo = todo.create("Call mom", "You need to talk about your plane ticket.", "Tomorrow", "high");
-    //console.log(newTodo.get());
-    //console.log(otherTodo.get());
     // Add them to the default project
     defaultProject.addTodo(defaultTodo);
     defaultProject.addTodo(newTodo);
     defaultProject.addTodo(otherTodo);
-    //console.log(defaultProject.get());
     // Create new project
     const personalTasks = proj.create("Personal tasks");
     allProjects.push(personalTasks);
-    //console.log(personalTasks.get());
     // Remove todos from default
     defaultProject.removeTodo(newTodo);
-    //console.log(defaultProject.get());
-    // Set todos as complete
     personalTasks.addTodo(newTodo);
-    //console.log(personalTasks.get())
-    //console.log(newTodo.get());
-    newTodo.changeCompletedStatus();
-    //console.log(newTodo.get());
-
-    console.log(currentProject);
 
     function displayAllProjects() {
         for (const item of allProjects) {
@@ -79,8 +55,19 @@ const controller = (function() {
         newTodo = todo.create(todoFromModal.title, todoFromModal.description, todoFromModal.duedate, todoFromModal.priority);
         currentProject.addTodo(newTodo);
         dom.showTodoinDisplay(newTodo);
-        //console.log(currentProject);
-        //console.log(currentProject.todos);
+    }
+
+    function editTodo(todo, todoFromModal) {
+        for (const item of currentProject.todos) {
+            if (item.title === todo.title) {
+                item.updateTitle(todoFromModal.title);
+                item.updateDescription(todoFromModal.description);
+                item.updateDueDate(todoFromModal.duedate);
+                item.updatePriority(todoFromModal.priority);
+                console.log(item);
+                console.log(currentProject.todos);
+            }
+        }
     }
 
     function getTodoFields() {
@@ -116,7 +103,7 @@ const controller = (function() {
     newTodoButton.addEventListener('click', getTodoFields);
     newProjectButton.addEventListener('click', makeNewProject);
     
-    return { todo, proj, dom, updateCurrentProject, makeNewTodo, removeFromCurrentProject };
+    return { todo, proj, dom, updateCurrentProject, makeNewTodo, removeFromCurrentProject, editTodo };
     
 })();
 
