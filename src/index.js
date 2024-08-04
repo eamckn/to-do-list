@@ -107,12 +107,16 @@ const controller = (function() {
         console.log(currentProject);
     }
 
+    function removeFromCurrentProject(todo) {
+        currentProject.removeTodo(todo);
+    }
+
     document.addEventListener('DOMContentLoaded', displayAllProjects)
     document.addEventListener('DOMContentLoaded', displayCurrentProjectTodos)
     newTodoButton.addEventListener('click', getTodoFields);
     newProjectButton.addEventListener('click', makeNewProject);
     
-    return { todo, proj, dom, updateCurrentProject, makeNewTodo };
+    return { todo, proj, dom, updateCurrentProject, makeNewTodo, removeFromCurrentProject };
     
 })();
 

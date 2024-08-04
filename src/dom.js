@@ -189,10 +189,15 @@ export default function domManip() {
         todoToDisplay.appendChild(todoInfo);
         todoToDisplay.appendChild(optionsContainer);
 
-        setPriorityIndicatorColor(priorityIndicator, todo);
         display.appendChild(todoToDisplay);
+
+        setPriorityIndicatorColor(priorityIndicator, todo);
         todoInfo.addEventListener('click', function() {
             toggleTodoDescription(descriptionParagraph);
+        })
+        trashIcon.addEventListener('click', function() {
+            display.removeChild(todoToDisplay);
+            controller.removeFromCurrentProject(todo);
         })
     }
 
