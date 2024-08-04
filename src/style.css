@@ -6,6 +6,12 @@
 
 html {
     height: 100%;
+
+    --skyblue-dark: #0284c7;
+    --skyblue-med: #38bdf8;
+    --skyblue-light: #bae6fd; 
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body {
@@ -20,6 +26,7 @@ header {
 
     flex: auto;
 
+    background-color: var(--skyblue-dark);
 }
 
 #content {
@@ -33,23 +40,55 @@ header {
 #sidebar {
     width: 25%;
     height: 100%;
+    background-color: var(--skyblue-light);
 
     flex: auto;
-
-    border: 1px solid black;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    padding: 1rem;
+    gap: 1rem;
+}
+
+#sidebar #projects {
+    display: flex;
+    gap: 2rem;
+
+    align-items: center;
+}
+
+button#create-project {
+    width: 4rem;
+    height: 4rem;
+
+    font-size: 2rem;
+    border-radius: 2rem;
+    background-color: var(--skyblue-dark);
+    border: none;
+}
+
+#sidebar button:not(#create-project) {
+    font-size: 1.15rem;;
+
+    padding: 1rem;
+    background: none;
+    border: none;
+    border-radius: 2rem;
+}
+
+#sidebar button:hover {
+    color: white;
+    background-color: rgba(0, 0, 0, .2) !important;
 }
 
 #display {
     width: 75%;
     height: 100%;
+    background-color: var(--skyblue-med);
 
     flex: auto;
-
-    background-color: tan;
 
     display: flex;
     flex-direction: column;
@@ -64,6 +103,7 @@ div.todo {
     height: auto;
     padding: 1rem;
     border: 1px solid black;
+    background-color: var(--skyblue-light);
     gap: 1rem;
     border-radius: 10px;
 
