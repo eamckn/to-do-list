@@ -286,6 +286,7 @@ export default function domManip() {
     }
 
 
-    return { showProjectInSideBar, showTodoinDisplay, displayNewProject, displayDialogForInput, editTodoInDisplay };
+    return { showProjectInSideBar, showTodoinDisplay, displayNewProject, 
+            displayDialogForInput, editTodoInDisplay, clearDisplay };
 
 }

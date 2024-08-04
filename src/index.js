@@ -9,6 +9,7 @@ const display = document.querySelector("#display");
 
 const newTodoButton = document.querySelector("#create-todo");
 const newProjectButton = document.querySelector("#create-project");
+const allTodosButton = document.querySelector("#all-todos");
 
 const controller = (function() {
 
@@ -98,10 +99,22 @@ const controller = (function() {
         currentProject.removeTodo(todo);
     }
 
+    function getAllTodos() {
+        for (const project of allProjects) {
+            for (const todo of project.todos) {
+                dom.showTodoinDisplay(todo);
+            }
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', displayAllProjects)
     document.addEventListener('DOMContentLoaded', displayCurrentProjectTodos)
     newTodoButton.addEventListener('click', getTodoFields);
     newProjectButton.addEventListener('click', makeNewProject);
+    allTodosButton.addEventListener('click', function() {
+        dom.clearDisplay();
+        getAllTodos();
+    });
     
     return { todo, proj, dom, updateCurrentProject, makeNewTodo, removeFromCurrentProject, editTodo };
     
