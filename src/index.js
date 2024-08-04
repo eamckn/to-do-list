@@ -118,6 +118,7 @@ const controller = (function() {
     allTodosButton.addEventListener('click', function() {
         dom.clearDisplay();
         displayEachTodo();
+        dom.showViewingAllTodos();
     });
     
     return { todo, proj, dom, updateCurrentProject, makeNewTodo,

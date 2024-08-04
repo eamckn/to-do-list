@@ -317,9 +317,15 @@ export default function domManip() {
         currentProjectName.innerHTML = currentProject.name;
     }
 
+    function showViewingAllTodos() {
+        let currentProjectName = document.querySelector("p#current-project");
+        currentProjectName.innerHTML = "All Tasks"
+    }
+
 
     return { showTodoinDisplay, displayNewProject, 
             displayDialogForInput, editTodoInDisplay, clearDisplay,
-            displayDialogForProject, showCurrentProjectInDisplay };
+            displayDialogForProject, showCurrentProjectInDisplay,
+            showViewingAllTodos };
 
 }
