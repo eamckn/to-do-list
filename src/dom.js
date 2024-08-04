@@ -206,16 +206,6 @@ export default function domManip() {
         return dialog;
     }
 
-    function showProjectInSideBar(project) {
-        const projectToDisplay = document.createElement("button");
-        projectToDisplay.innerHTML = project.name;
-        sidebar.appendChild(projectToDisplay);
-        projectToDisplay.addEventListener('click', function() {
-            displayProjectTodos(project);
-            controller.updateCurrentProject(project);
-        });
-    }
-
     function showTodoinDisplay(todo) {
         const todoToDisplay = document.createElement("div");
         todoToDisplay.className = "todo";
@@ -304,6 +294,7 @@ export default function domManip() {
         newProject.addEventListener('click', function() {
             displayProjectTodos(project);
             controller.updateCurrentProject(project);
+            showCurrentProjectInDisplay(project);
         });
     }
 
@@ -327,7 +318,7 @@ export default function domManip() {
     }
 
 
-    return { showProjectInSideBar, showTodoinDisplay, displayNewProject, 
+    return { showTodoinDisplay, displayNewProject, 
             displayDialogForInput, editTodoInDisplay, clearDisplay,
             displayDialogForProject, showCurrentProjectInDisplay };
 

@@ -42,7 +42,7 @@ const controller = (function() {
 
     function displayAllProjects() {
         for (const item of allProjects) {
-            dom.showProjectInSideBar(item);
+            dom.displayNewProject(item);
         }
     }
 
