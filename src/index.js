@@ -75,19 +75,18 @@ const controller = (function() {
         dom.displayDialogForInput();
     }
 
-    function makeNewProject() {
-        let name = getProjectName();
+    function makeNewProject(name) {
         if (name) {
             let newProject = proj.create(name);
             allProjects.push(newProject);
             dom.displayNewProject(newProject);
-            console.log(newProject);
-            console.log(allProjects);
+            //console.log(newProject);
+            //console.log(allProjects);
         }
     }
 
     function getProjectName() {
-        return prompt("What would you like to name this project?")
+        dom.displayDialogForProject();
     }
 
     function updateCurrentProject(project) {
@@ -99,7 +98,7 @@ const controller = (function() {
         currentProject.removeTodo(todo);
     }
 
-    function getAllTodos() {
+    function displayEachTodo() {
         for (const project of allProjects) {
             for (const todo of project.todos) {
                 dom.showTodoinDisplay(todo);
@@ -110,13 +109,14 @@ const controller = (function() {
     document.addEventListener('DOMContentLoaded', displayAllProjects)
     document.addEventListener('DOMContentLoaded', displayCurrentProjectTodos)
     newTodoButton.addEventListener('click', getTodoFields);
-    newProjectButton.addEventListener('click', makeNewProject);
+    newProjectButton.addEventListener('click', getProjectName);
     allTodosButton.addEventListener('click', function() {
         dom.clearDisplay();
-        getAllTodos();
+        displayEachTodo();
     });
     
-    return { todo, proj, dom, updateCurrentProject, makeNewTodo, removeFromCurrentProject, editTodo };
+    return { todo, proj, dom, updateCurrentProject, makeNewTodo,
+            removeFromCurrentProject, editTodo, makeNewProject };
     
 })();
 

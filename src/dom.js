@@ -9,8 +9,18 @@ export default function domManip() {
     const sidebar = document.querySelector("#sidebar");
     const display = document.querySelector("#display");
 
+    function displayDialogForProject() {
+        let dialog = buildProjectDialog()
+        dialog.querySelector("button").addEventListener('click', function() {
+            let name = dialog.querySelector("input").value;
+
+            controller.makeNewProject(name);
+        })
+        dialog.showModal();
+    }
+
     function displayDialogForInput() {
-        let dialog = buildDialog();
+        let dialog = buildTodoDialog();
         // Add event listener for button to save values
         dialog.querySelector("button").addEventListener('click', function() {
             let title = dialog.querySelector("input[id = 'title']").value;
@@ -24,7 +34,7 @@ export default function domManip() {
     }
 
     function displayDialogForEditing(todo, todoToDisplay) {
-        let dialog = buildDialog();
+        let dialog = buildTodoDialog();
         dialog.querySelector("input[id = 'title']").value = todo.title;
         dialog.querySelector("textarea[id = 'description']").value = todo.description;
         dialog.querySelector("input[id = 'duedate']").value = todo.duedate;
@@ -62,7 +72,7 @@ export default function domManip() {
         setPriorityIndicatorColor(priorityIndicator, newTodoItem);
     }
 
-    function buildDialog() {
+    function buildTodoDialog() {
         // Create dialog elements
         const dialog = document.createElement("dialog");
         const form = document.createElement("form");
@@ -165,6 +175,32 @@ export default function domManip() {
         form.appendChild(addButton);
 
         dialog.appendChild(form);
+        content.appendChild(dialog);
+
+        return dialog;
+    }
+
+    function buildProjectDialog() {
+        const dialog = document.createElement("dialog");
+        const form = document.createElement("form");
+        const projectLabel = document.createElement("label");
+        const projectInput = document.createElement("input");
+        const addProjectButton = document.createElement("button");
+
+        form.setAttribute("method", "dialog");
+        projectLabel.setAttribute("for", "project_name");
+        projectInput.setAttribute("type", "text");
+        projectInput.setAttribute("id", "project_name");
+        projectInput.setAttribute("name", "project_name");
+
+        projectLabel.innerHTML = "New project name:";
+        addProjectButton.innerHTML = "Add project";
+
+        form.appendChild(projectLabel);
+        form.appendChild(projectInput);
+        form.appendChild(addProjectButton);
+        dialog.appendChild(form);
+
         content.appendChild(dialog);
 
         return dialog;
@@ -287,6 +323,7 @@ export default function domManip() {
 
 
     return { showProjectInSideBar, showTodoinDisplay, displayNewProject, 
-            displayDialogForInput, editTodoInDisplay, clearDisplay };
+            displayDialogForInput, editTodoInDisplay, clearDisplay,
+            displayDialogForProject };
 
 }
