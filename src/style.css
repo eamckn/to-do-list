@@ -87,6 +87,9 @@ div.todo {
 .todo .todo-info {
     display: flex;
     flex-direction: column;
+
+    width: 40%;
+    margin-right: auto;
 }
 
 .todo-info .title.paragraph {
@@ -94,19 +97,28 @@ div.todo {
 }
 
 .todo-info .description.paragraph {
-    width: 30%;
+    width: 100%;
 }
 
 .options-container {
-    margin-left: auto;
+    display: flex;
+    align-items: center;
+
+    gap: 2rem;
+}
+
+.options-container input {
+    transform: scale(2);
+}
+
+.image-container {
+    height: 50%;
+    width: 2rem;
+
+    margin: auto 0;
 
     display: flex;
     align-items: center;
-}
-
-.trash-container {
-    height: 50%;
-    width: 2rem;
 }
 
 dialog {

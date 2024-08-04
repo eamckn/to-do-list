@@ -168,12 +168,20 @@ export default function domManip() {
         const optionsContainer = document.createElement("div");
         optionsContainer.className = "options-container";
         const trashDiv = document.createElement("div");
-        trashDiv.className = "trash-container";
+        trashDiv.className = "image-container options-item";
         const trashIcon = new Image();
         trashIcon.src = trashCan;
+        const completedCheckbox = document.createElement("input");
+        completedCheckbox.className = "options-item";
+        completedCheckbox.setAttribute("type", "checkbox");
         const editDiv = document.createElement("div");
-        editDiv.className = "edit-container";
+        editDiv.className = "image-container options-item";
+        const editIcon = new Image();
+        editIcon.src = editPencil;
         trashDiv.appendChild(trashIcon);
+        editDiv.appendChild(editIcon);
+        optionsContainer.appendChild(editDiv);
+        optionsContainer.appendChild(completedCheckbox);
         optionsContainer.appendChild(trashDiv);
 
 
