@@ -131,7 +131,9 @@ dialog {
     top: 50%;
     transform: translate(-50%, -50%);
 
-    padding: 3rem;
+    width: 40%;
+
+    padding: 2rem;
 }
 
 dialog form {
@@ -141,5 +143,33 @@ dialog form {
 }
 
 form input {
+    padding: .5rem;
+}
+
+form fieldset {
+    width: 80%;
+
+    text-align: center;
+    border: none;
+}
+
+form ul {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+form li {
+    list-style-type: none;
+
+    display: inline-block;
+}
+
+form button {
+    width: 40%;
+    height: 3rem;
+
+    font-size: 1rem;
+
     padding: .5rem;
 }
