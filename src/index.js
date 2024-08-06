@@ -43,8 +43,9 @@ const controller = (function() {
     }
 
     function makeNewTodo(todoFromModal) {
-        newTodo = todo.create(todoFromModal.title, todoFromModal.description, todoFromModal.duedate, todoFromModal.priority);
+        let newTodo = todo.create(todoFromModal.title, todoFromModal.description, todoFromModal.duedate, todoFromModal.priority);
         currentProject.addTodo(newTodo);
+        populateStorageWithProject(currentProject);
         dom.showTodoinDisplay(newTodo);
     }
 
@@ -55,6 +56,7 @@ const controller = (function() {
                 item.updateDescription(todoFromModal.description);
                 item.updateDueDate(todoFromModal.duedate);
                 item.updatePriority(todoFromModal.priority);
+                populateStorageWithProject(currentProject);
                 console.log(item);
                 console.log(currentProject.todos);
             }
@@ -69,6 +71,7 @@ const controller = (function() {
         if (name) {
             let newProject = proj.create(name);
             allProjects.push(newProject);
+            populateStorageWithProject(newProject);
             dom.displayNewProject(newProject);
             //console.log(newProject);
             //console.log(allProjects);
@@ -86,6 +89,7 @@ const controller = (function() {
 
     function removeFromCurrentProject(todo) {
         currentProject.removeTodo(todo);
+        populateStorageWithProject(currentProject);
     }
 
     function displayEachTodo() {
@@ -98,6 +102,10 @@ const controller = (function() {
 
     function displayCurrentProject() {
         dom.showCurrentProjectInDisplay(currentProject);
+    }
+
+    function populateStorageWithProject(project) {
+        localStorage.setItem(`${project.name}`, JSON.stringify(project));
     }
 
     document.addEventListener('DOMContentLoaded', displayAllProjects)
