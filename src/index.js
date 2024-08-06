@@ -108,6 +108,15 @@ const controller = (function() {
         localStorage.setItem(`${project.name}`, JSON.stringify(project));
     }
 
+    function getFromStorage() {
+        if (localStorage.length === 0) return;
+        else {
+            console.log("hey");
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', getFromStorage);
+
     document.addEventListener('DOMContentLoaded', displayAllProjects)
     document.addEventListener('DOMContentLoaded', displayCurrentProjectTodos)
     document.addEventListener('DOMContentLoaded', displayCurrentProject());
