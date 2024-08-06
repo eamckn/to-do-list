@@ -160,3 +160,16 @@ const controller = (function() {
 })();
 
 export { controller };
+
+/*
+
+TODO:
+- Generally style the main page display
+- Style the dialogs
+- Add a cancel button to dialogs
+- Add form validation to dialog inputs
+- Maybe add date formatting to duedate
+- Add delete button for projects
+- Add feature to edit project names
+
+*/
