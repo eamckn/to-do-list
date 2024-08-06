@@ -118,35 +118,26 @@ const controller = (function() {
             }
             for (let i = localStorage.length - 1; i >= 0; i--) {
                 let returnedProject = JSON.parse(localStorage.getItem(localStorage.key(i)));
-                //console.log(returnedProject);
+                
                 let projectToCopyFrom = proj.create("temp");
-                //console.log(projectToCopyFrom);
                 delete projectToCopyFrom.name;
                 delete projectToCopyFrom.todos;
-                //console.log(projectToCopyFrom);
+
                 Object.assign(returnedProject, projectToCopyFrom);
-                //console.log(returnedProject);
-                // I might not need any of this:
+
                 let todoToCopyFrom = todo.create("a", "b", "c", "low");
-                //console.log(todoToCopyFrom);
+
                 delete todoToCopyFrom.title;
                 delete todoToCopyFrom.description;
                 delete todoToCopyFrom.duedate;
                 delete todoToCopyFrom.priority;
-                //console.log(todoToCopyFrom);
-                console.log(returnedProject);
+
                 for (let todo of returnedProject.todos) {
-                    //console.log(todo);
                     Object.assign(todo, todoToCopyFrom);
-                    //console.log(todo);
                 }
-                //console.log(returnedProject);
-                
                allProjects.push(returnedProject);
             }
-            //console.log(allProjects);
             currentProject = allProjects[0];
-            //console.log(currentProject);
         }
     }
 
