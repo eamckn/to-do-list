@@ -21,7 +21,7 @@ const controller = (function() {
 
     const defaultProject = proj.create('Default');
 
-    let allProjects = [defaultProject];
+    const allProjects = [defaultProject];
 
     let currentProject = defaultProject;
 
@@ -30,14 +30,15 @@ const controller = (function() {
     let newTodo = todo.create("Clean room", "It's messy.", "Tomorrow", "high");
     let otherTodo = todo.create("Call mom", "You need to talk about your plane ticket.", "Tomorrow", "high");
     // Add them to the default project
-    currentProject.addTodo(defaultTodo);
-    currentProject.addTodo(newTodo);
-    currentProject.addTodo(otherTodo);
-    populateProjectStorage(currentProject);
+    defaultProject.addTodo(defaultTodo);
+    defaultProject.addTodo(newTodo);
+    defaultProject.addTodo(otherTodo);
     // Create new project
     const personalTasks = proj.create("Personal tasks");
     allProjects.push(personalTasks);
-    populateProjectStorage(personalTasks);
+    // Remove todos from default
+    defaultProject.removeTodo(newTodo);
+    personalTasks.addTodo(newTodo);
 
     function displayAllProjects() {
         for (const item of allProjects) {
@@ -54,8 +55,6 @@ const controller = (function() {
     function makeNewTodo(todoFromModal) {
         newTodo = todo.create(todoFromModal.title, todoFromModal.description, todoFromModal.duedate, todoFromModal.priority);
         currentProject.addTodo(newTodo);
-        populateProjectStorage(currentProject);
-        //populateOnNewTodo(newTodo);
         dom.showTodoinDisplay(newTodo);
     }
 
@@ -80,7 +79,6 @@ const controller = (function() {
         if (name) {
             let newProject = proj.create(name);
             allProjects.push(newProject);
-            populateProjectStorage(newProject);
             dom.displayNewProject(newProject);
             //console.log(newProject);
             //console.log(allProjects);
@@ -111,21 +109,6 @@ const controller = (function() {
     function displayCurrentProject() {
         dom.showCurrentProjectInDisplay(currentProject);
     }
-
-    function populateProjectStorage(project) {
-        localStorage.setItem(`${project.name}`, JSON.stringify(project));
-    }
-
-    function getFromProjectStorage() {
-        allProjects = []
-        console.log(localStorage.length)
-        for (let i = 0; i < localStorage.length; i++) {
-            console.log(JSON.parse(localStorage.getItem(localStorage.key(i))));
-            allProjects.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
-        }
-    }
-
-    document.addEventListener('DOMContentLoaded', getFromProjectStorage);
 
     document.addEventListener('DOMContentLoaded', displayAllProjects)
     document.addEventListener('DOMContentLoaded', displayCurrentProjectTodos)
