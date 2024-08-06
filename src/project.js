@@ -11,17 +11,17 @@ export default function project() {
         }
 
         const addTodo = function(todo) {
-            todos.push(todo);
+            this.todos.push(todo);
         }
 
         const removeTodo = function(todo) {
             let todoTitle = todo.title;
 
             let index = 0;
-            for (const item of todos) {
+            for (const item of this.todos) {
                 if (todoTitle === item.title) {
                     console.log(`Found todo to remove in project ${get().name}`);
-                    todos.splice(index, 1);
+                    this.todos.splice(index, 1);
                     return;
                 }
                 else index++;
